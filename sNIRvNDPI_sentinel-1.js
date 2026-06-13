@@ -1,0 +1,36 @@
+//VERSION=3
+//Modified Chlorophyll Absorption in Reflectance Index 1
+
+function setup() {
+  return {
+    input: [ // this sets which bands to use
+      {
+        bands: [
+          "B03",
+          "B04",
+          "B05",
+          "dataMask"
+        ],
+      },
+   ],
+  output: [ // this defines the output image type
+    {
+      id: "default",
+      bands: ["index"],
+      sampleType: "FLOAT32"
+    },
+    {
+      id: "dataMask",
+      bands: 1
+    }]
+  }
+}
+
+function evaluatePixel(sample) {
+  // this computes the index value
+  let ndx = 1.2 * (2.5 * (sample.B05 - sample.B04) - 1.3 * (sample.B05 - sample.B03));
+  return {
+    default: [ndx],
+    dataMask: [sample.dataMask]
+  }
+}

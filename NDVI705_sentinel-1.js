@@ -1,0 +1,36 @@
+//VERSION=3
+//Enhanced Built-Up and Bareness Index
+
+function setup() {
+  return {
+    input: [ // this sets which bands to use
+      {
+        bands: [
+          "B05",
+          "B06",
+          "B10",
+          "dataMask"
+        ],
+      },
+   ],
+  output: [ // this defines the output image type
+    {
+      id: "default",
+      bands: ["index"],
+      sampleType: "FLOAT32"
+    },
+    {
+      id: "dataMask",
+      bands: 1
+    }]
+  }
+}
+
+function evaluatePixel(sample) {
+  // this computes the index value
+  let ndx = (sample.B06 - sample.B05)/(10 * ((sample.B06 + sample.B10)^0.5));
+  return {
+    default: [ndx],
+    dataMask: [sample.dataMask]
+  }
+}
