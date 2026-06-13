@@ -51,6 +51,9 @@ evalscripts <- purrr::map(
     ),
   .progress = TRUE) |>
   purrr::list_flatten() |>
+  setNames(paste0(dados_espectrais,
+                  "_",
+                  rep(colecoes, each = length(dados_espectrais)))) |>
   purrr::compact()
 
 evalscripts
