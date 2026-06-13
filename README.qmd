@@ -1,0 +1,26 @@
+---
+title: ""
+format: gfm
+editor: visual
+---
+
+# Copernicus Evalscripts
+
+> Funções evalscripts (.js) para usar nas funções do pacote [CDSE](https://zivankaraman.github.io/CDSE/index.html) de extrações de cenas da [plataforma Copernicus](https://browser.dataspace.copernicus.eu).
+
+```{r}
+#| echo: false
+#| warning: false
+
+readr::read_csv("evalscripts_indices.csv") |> 
+  dplyr::rename("Índice" = 1,
+                "Nome" = 2,
+                "Descrição" = 3,
+                "Aplicação" = 4,
+                "Coleção" = 5,
+                "Arquivo" = 6) |> 
+  dplyr::relocate(Arquivo,
+                  .before = Índice) |> 
+  knitr::kable()
+```
+
