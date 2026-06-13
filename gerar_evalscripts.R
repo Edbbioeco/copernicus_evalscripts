@@ -50,6 +50,7 @@ evalscripts <- purrr::map(
 
     ),
   .progress = TRUE) |>
-  purrr::list_flatten()
+  purrr::list_flatten() |>
+  purrr::compact()
 
 evalscripts
