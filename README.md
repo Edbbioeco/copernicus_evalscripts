@@ -1,3 +1,392 @@
+
+
 # Copernicus Evalscripts
 
-> Funções evalscripts (.js) para usar nas funções do pacote [CDSE](https://zivankaraman.github.io/CDSE/index.html) de extrações de cenas da [plataforma Copernicus](https://browser.dataspace.copernicus.eu).
+> Funções evalscripts (.js) para usar nas funções do pacote
+> [CDSE](https://zivankaraman.github.io/CDSE/index.html) de extrações de
+> cenas da [plataforma
+> Copernicus](https://browser.dataspace.copernicus.eu).
+
+| Arquivo | Índice | Nome | Descrição | Aplicação | Coleção |
+|:---|:---|:---|:---|:---|:---|
+| AFRI2100_landsat.js | AFRI2100 | Aerosol Free Vegetation Index (2100nm) | Índice de vegetação robusto à aerossóis, usando banda SWIR 2100nm | Vegetação | Landsat |
+| AFRI2100_sentinel-1.js | AFRI2100 | Aerosol Free Vegetation Index (2100nm) | Índice de vegetação robusto à aerossóis, usando banda SWIR 2100nm | Vegetação | Sentinel-1 |
+| AFRI2100_sentinel-2.js | AFRI2100 | Aerosol Free Vegetation Index (2100nm) | Índice de vegetação robusto à aerossóis, usando banda SWIR 2100nm | Vegetação | Sentinel-2 |
+| ANDWI_landsat.js | ANDWI | Automated Normalized Difference Water Index | Detecção automatizada de corpos d’água | Água | Landsat |
+| ANDWI_sentinel-1.js | ANDWI | Automated Normalized Difference Water Index | Detecção automatizada de corpos d’água | Água | Sentinel-1 |
+| ARI2_landsat.js | ARI2 | Anthocyanin Reflectance Index 2 | Estimativa de conteúdo de antocianina foliar usando banda red-edge | Vegetação / Saúde vegetal | Landsat |
+| ARI2_sentinel-1.js | ARI2 | Anthocyanin Reflectance Index 2 | Estimativa de conteúdo de antocianina foliar usando banda red-edge | Vegetação / Saúde vegetal | Sentinel-1 |
+| ARI2_sentinel-2.js | ARI2 | Anthocyanin Reflectance Index 2 | Estimativa de conteúdo de antocianina foliar usando banda red-edge | Vegetação / Saúde vegetal | Sentinel-2 |
+| ARVI_landsat.js | ARVI | Atmospherically Resistant Vegetation Index | NDVI corrigido para efeitos atmosféricos usando banda azul | Vegetação | Landsat |
+| ARVI_sentinel-1.js | ARVI | Atmospherically Resistant Vegetation Index | NDVI corrigido para efeitos atmosféricos usando banda azul | Vegetação | Sentinel-1 |
+| AVI_landsat.js | AVI | Advanced Vegetation Index | Índice de vegetação avançado sensível a dossel denso | Vegetação | Landsat |
+| AVI_sentinel-1.js | AVI | Advanced Vegetation Index | Índice de vegetação avançado sensível a dossel denso | Vegetação | Sentinel-1 |
+| AVI_sentinel-2.js | AVI | Advanced Vegetation Index | Índice de vegetação avançado sensível a dossel denso | Vegetação | Sentinel-2 |
+| AWEInsh_sentinel-1.js | AWEInsh | Automated Water Extraction Index (no shadow) | Extração de água sem influência de sombras | Água | Sentinel-1 |
+| BAI_landsat.js | BAI | Burn Area Index | Detecção de áreas queimadas pelo realce de carvão pós-fogo | Fogo / Queimadas | Landsat |
+| BAI_sentinel-1.js | BAI | Burn Area Index | Detecção de áreas queimadas pelo realce de carvão pós-fogo | Fogo / Queimadas | Sentinel-1 |
+| BAI_sentinel-2.js | BAI | Burn Area Index | Detecção de áreas queimadas pelo realce de carvão pós-fogo | Fogo / Queimadas | Sentinel-2 |
+| BAIM_landsat.js | BAIM | Burned Area Index for MODIS | Adaptação do BAI para sensores MODIS/similares | Fogo / Queimadas | Landsat |
+| BAIM_sentinel-2.js | BAIM | Burned Area Index for MODIS | Adaptação do BAI para sensores MODIS/similares | Fogo / Queimadas | Sentinel-2 |
+| BCC_landsat.js | BCC | Blue Chromatic Coordinate | Proporção da banda azul na soma RGB, indicador de solo e vegetação | Solo / Vegetação | Landsat |
+| BCC_sentinel-1.js | BCC | Blue Chromatic Coordinate | Proporção da banda azul na soma RGB, indicador de solo e vegetação | Solo / Vegetação | Sentinel-1 |
+| BCC_sentinel-2.js | BCC | Blue Chromatic Coordinate | Proporção da banda azul na soma RGB, indicador de solo e vegetação | Solo / Vegetação | Sentinel-2 |
+| BI_landsat.js | BI | Bare Soil Index | Índice de exposição de solo nu usando bandas SWIR e vermelho | Solo | Landsat |
+| BI_sentinel-2.js | BI | Bare Soil Index | Índice de exposição de solo nu usando bandas SWIR e vermelho | Solo | Sentinel-2 |
+| BIXS_landsat.js | BIXS | Built-up Index using SWIR | Detecta áreas construídas usando banda SWIR | Área urbana | Landsat |
+| BIXS_sentinel-2.js | BIXS | Built-up Index using SWIR | Detecta áreas construídas usando banda SWIR | Área urbana | Sentinel-2 |
+| BLFEI_sentinel-2.js | BLFEI | Built-up Land Features Extraction Index | Extração de feições urbanas construídas | Área urbana | Sentinel-2 |
+| bNIRv_landsat.js | bNIRv | Background-adjusted Near-Infrared reflectance of vegetation | NIRv ajustado para influência de fundo do solo | Vegetação / Fenologia | Landsat |
+| bNIRv_sentinel-1.js | bNIRv | Background-adjusted Near-Infrared reflectance of vegetation | NIRv ajustado para influência de fundo do solo | Vegetação / Fenologia | Sentinel-1 |
+| bNIRv_sentinel-2.js | bNIRv | Background-adjusted Near-Infrared reflectance of vegetation | NIRv ajustado para influência de fundo do solo | Vegetação / Fenologia | Sentinel-2 |
+| BRBA_landsat.js | BRBA | Band Ratio for Built-up Area | Razão de bandas para identificação de área construída | Área urbana | Landsat |
+| BRBA_sentinel-2.js | BRBA | Band Ratio for Built-up Area | Razão de bandas para identificação de área construída | Área urbana | Sentinel-2 |
+| BWDRVI_sentinel-2.js | BWDRVI | Blue Wide Dynamic Range Vegetation Index | Versão de ampla faixa dinâmica do WDRVI usando banda azul | Vegetação | Sentinel-2 |
+| CCI_sentinel-1.js | CCI | Canopy Chlorophyll Content Index | Estimativa do conteúdo de clorofila do dossel | Vegetação / Bioquímica | Sentinel-1 |
+| CCI_sentinel-2.js | CCI | Canopy Chlorophyll Content Index | Estimativa do conteúdo de clorofila do dossel | Vegetação / Bioquímica | Sentinel-2 |
+| CI1SWIR_sentinel-1.js | CI1SWIR | Char Index 1 SWIR | Detecção de carvão/queimadas com banda SWIR 1 | Fogo / Queimadas | Sentinel-1 |
+| CI1SWIR_sentinel-2.js | CI1SWIR | Char Index 1 SWIR | Detecção de carvão/queimadas com banda SWIR 1 | Fogo / Queimadas | Sentinel-2 |
+| CI2SWIR_landsat.js | CI2SWIR | Char Index 2 SWIR | Detecção de carvão/queimadas com banda SWIR 2 | Fogo / Queimadas | Landsat |
+| CI2SWIR_sentinel-1.js | CI2SWIR | Char Index 2 SWIR | Detecção de carvão/queimadas com banda SWIR 2 | Fogo / Queimadas | Sentinel-1 |
+| CI2SWIR_sentinel-2.js | CI2SWIR | Char Index 2 SWIR | Detecção de carvão/queimadas com banda SWIR 2 | Fogo / Queimadas | Sentinel-2 |
+| CI2woSWIR_landsat.js | CI2woSWIR | Char Index 2 without SWIR | Detecção de queimadas sem uso de banda SWIR | Fogo / Queimadas | Landsat |
+| CI2woSWIR_sentinel-1.js | CI2woSWIR | Char Index 2 without SWIR | Detecção de queimadas sem uso de banda SWIR | Fogo / Queimadas | Sentinel-1 |
+| CI2woSWIR_sentinel-2.js | CI2woSWIR | Char Index 2 without SWIR | Detecção de queimadas sem uso de banda SWIR | Fogo / Queimadas | Sentinel-2 |
+| CIRE_landsat.js | CIRE | Chlorophyll Index Red-Edge | Estimativa de clorofila foliar usando banda red-edge | Vegetação / Bioquímica | Landsat |
+| CIRE_sentinel-1.js | CIRE | Chlorophyll Index Red-Edge | Estimativa de clorofila foliar usando banda red-edge | Vegetação / Bioquímica | Sentinel-1 |
+| CIRE_sentinel-2.js | CIRE | Chlorophyll Index Red-Edge | Estimativa de clorofila foliar usando banda red-edge | Vegetação / Bioquímica | Sentinel-2 |
+| CLOSDI_landsat.js | CLOSDI | CLOud Shadow Detection Index | Detecção de sombras de nuvens em imagens orbitais | Nuvens / Qualidade | Landsat |
+| CLOSDI_sentinel-1.js | CLOSDI | CLOud Shadow Detection Index | Detecção de sombras de nuvens em imagens orbitais | Nuvens / Qualidade | Sentinel-1 |
+| CLOSDI_sentinel-2.js | CLOSDI | CLOud Shadow Detection Index | Detecção de sombras de nuvens em imagens orbitais | Nuvens / Qualidade | Sentinel-2 |
+| CRI700_landsat.js | CRI700 | Carotenoid Reflectance Index 700nm | Estimativa de carotenoides foliares na faixa de 700nm | Vegetação / Bioquímica | Landsat |
+| CRI700_sentinel-1.js | CRI700 | Carotenoid Reflectance Index 700nm | Estimativa de carotenoides foliares na faixa de 700nm | Vegetação / Bioquímica | Sentinel-1 |
+| CRSWIR_landsat.js | CRSWIR | Continuum Removal SWIR | Remoção de contínuo em SWIR para análise de minerais/solo | Solo / Minerais | Landsat |
+| CRSWIR_sentinel-1.js | CRSWIR | Continuum Removal SWIR | Remoção de contínuo em SWIR para análise de minerais/solo | Solo / Minerais | Sentinel-1 |
+| CSISWIR_landsat.js | CSISWIR | Combined Spectral Index SWIR | Índice espectral combinado usando SWIR | Solo / Vegetação | Landsat |
+| CSISWIR_sentinel-1.js | CSISWIR | Combined Spectral Index SWIR | Índice espectral combinado usando SWIR | Solo / Vegetação | Sentinel-1 |
+| CSISWIR_sentinel-2.js | CSISWIR | Combined Spectral Index SWIR | Índice espectral combinado usando SWIR | Solo / Vegetação | Sentinel-2 |
+| CSIT_landsat.js | CSIT | Combined Spectral Index Thermal | Índice espectral combinado com banda térmica | Solo / Temperatura | Landsat |
+| CSIT_sentinel-1.js | CSIT | Combined Spectral Index Thermal | Índice espectral combinado com banda térmica | Solo / Temperatura | Sentinel-1 |
+| CSIT_sentinel-2.js | CSIT | Combined Spectral Index Thermal | Índice espectral combinado com banda térmica | Solo / Temperatura | Sentinel-2 |
+| CVI_landsat.js | CVI | Chlorophyll Vegetation Index | Estimativa de clorofila na vegetação | Vegetação / Bioquímica | Landsat |
+| CVI_sentinel-1.js | CVI | Chlorophyll Vegetation Index | Estimativa de clorofila na vegetação | Vegetação / Bioquímica | Sentinel-1 |
+| CVI_sentinel-2.js | CVI | Chlorophyll Vegetation Index | Estimativa de clorofila na vegetação | Vegetação / Bioquímica | Sentinel-2 |
+| DBI_landsat.js | DBI | Dry Built-up Index | Discriminação de áreas construídas em regiões áridas | Área urbana / Solo | Landsat |
+| DBI_sentinel-2.js | DBI | Dry Built-up Index | Discriminação de áreas construídas em regiões áridas | Área urbana / Solo | Sentinel-2 |
+| DPDD_landsat.js | DPDD | Dual Polarization Difference Descriptor | Descritor de diferença entre polarizações (SAR) | SAR / Estrutura vegetal | Landsat |
+| DPDD_sentinel-1.js | DPDD | Dual Polarization Difference Descriptor | Descritor de diferença entre polarizações (SAR) | SAR / Estrutura vegetal | Sentinel-1 |
+| DPDD_sentinel-2.js | DPDD | Dual Polarization Difference Descriptor | Descritor de diferença entre polarizações (SAR) | SAR / Estrutura vegetal | Sentinel-2 |
+| DpRVIHH_landsat.js | DpRVIHH | Dual-pol Radar Vegetation Index HH | Índice de vegetação por radar de dupla polarização HH | SAR / Vegetação | Landsat |
+| DpRVIHH_sentinel-1.js | DpRVIHH | Dual-pol Radar Vegetation Index HH | Índice de vegetação por radar de dupla polarização HH | SAR / Vegetação | Sentinel-1 |
+| DpRVIHH_sentinel-2.js | DpRVIHH | Dual-pol Radar Vegetation Index HH | Índice de vegetação por radar de dupla polarização HH | SAR / Vegetação | Sentinel-2 |
+| DpRVIVV_sentinel-1.js | DpRVIVV | Dual-pol Radar Vegetation Index VV | Índice de vegetação por radar de dupla polarização VV | SAR / Vegetação | Sentinel-1 |
+| DSI_sentinel-1.js | DSI | Drought Stress Index | Índice de estresse hídrico por seca | Vegetação / Estresse | Sentinel-1 |
+| DSI_sentinel-2.js | DSI | Drought Stress Index | Índice de estresse hídrico por seca | Vegetação / Estresse | Sentinel-2 |
+| DSWI2_sentinel-1.js | DSWI2 | Disease-Water Stress Index 2 | Detecta estresse hídrico e doenças em plantas (versão 2) | Vegetação / Estresse | Sentinel-1 |
+| DSWI2_sentinel-2.js | DSWI2 | Disease-Water Stress Index 2 | Detecta estresse hídrico e doenças em plantas (versão 2) | Vegetação / Estresse | Sentinel-2 |
+| DSWI3_sentinel-1.js | DSWI3 | Disease-Water Stress Index 3 | Detecta estresse hídrico e doenças em plantas (versão 3) | Vegetação / Estresse | Sentinel-1 |
+| DSWI3_sentinel-2.js | DSWI3 | Disease-Water Stress Index 3 | Detecta estresse hídrico e doenças em plantas (versão 3) | Vegetação / Estresse | Sentinel-2 |
+| DSWI5_sentinel-1.js | DSWI5 | Disease-Water Stress Index 5 | Detecta estresse hídrico e doenças em plantas (versão 5) | Vegetação / Estresse | Sentinel-1 |
+| DSWI5_sentinel-2.js | DSWI5 | Disease-Water Stress Index 5 | Detecta estresse hídrico e doenças em plantas (versão 5) | Vegetação / Estresse | Sentinel-2 |
+| DVI_sentinel-1.js | DVI | Difference Vegetation Index | Diferença simples entre NIR e vermelho para estimativa de vegetação | Vegetação | Sentinel-1 |
+| EBI_landsat.js | EBI | Enhanced Built-up Index | Índice aprimorado de identificação de área construída | Área urbana | Landsat |
+| EBI_sentinel-1.js | EBI | Enhanced Built-up Index | Índice aprimorado de identificação de área construída | Área urbana | Sentinel-1 |
+| EBI_sentinel-2.js | EBI | Enhanced Built-up Index | Índice aprimorado de identificação de área construída | Área urbana | Sentinel-2 |
+| EMBI_sentinel-1.js | EMBI | Enhanced Modified Bare Soil Index | Versão melhorada do índice de solo exposto | Solo | Sentinel-1 |
+| EMBI_sentinel-2.js | EMBI | Enhanced Modified Bare Soil Index | Versão melhorada do índice de solo exposto | Solo | Sentinel-2 |
+| EVI_landsat.js | EVI | Enhanced Vegetation Index | NDVI aprimorado com correção atmosférica e de solo (NASA MODIS) | Vegetação | Landsat |
+| EVI_sentinel-1.js | EVI | Enhanced Vegetation Index | NDVI aprimorado com correção atmosférica e de solo (NASA MODIS) | Vegetação | Sentinel-1 |
+| EVI_sentinel-2.js | EVI | Enhanced Vegetation Index | NDVI aprimorado com correção atmosférica e de solo (NASA MODIS) | Vegetação | Sentinel-2 |
+| EVI2_landsat.js | EVI2 | Enhanced Vegetation Index 2 | Versão simplificada do EVI sem banda azul | Vegetação | Landsat |
+| EVI2_sentinel-1.js | EVI2 | Enhanced Vegetation Index 2 | Versão simplificada do EVI sem banda azul | Vegetação | Sentinel-1 |
+| EVI2_sentinel-2.js | EVI2 | Enhanced Vegetation Index 2 | Versão simplificada do EVI sem banda azul | Vegetação | Sentinel-2 |
+| ExG_sentinel-1.js | ExG | Excess Green Index | Realça cobertura verde para discriminação de vegetação em RGB | Vegetação | Sentinel-1 |
+| ExG_sentinel-2.js | ExG | Excess Green Index | Realça cobertura verde para discriminação de vegetação em RGB | Vegetação | Sentinel-2 |
+| ExGR_sentinel-1.js | ExGR | Excess Green minus Excess Red | Diferença entre excesso de verde e vermelho para vegetação | Vegetação | Sentinel-1 |
+| ExGR_sentinel-2.js | ExGR | Excess Green minus Excess Red | Diferença entre excesso de verde e vermelho para vegetação | Vegetação | Sentinel-2 |
+| FAI_sentinel-2.js | FAI | Floating Algae Index | Detecção de algas flutuantes em superfícies aquáticas | Água / Qualidade hídrica | Sentinel-2 |
+| FCVI_sentinel-2.js | FCVI | Fraction of green Canopy Vegetation Index | Fração da vegetação verde no dossel | Vegetação | Sentinel-2 |
+| FWEI_sentinel-1.js | FWEI | Floating Water and Erosion Index | Detecção de água flutuante e erosão | Água / Solo | Sentinel-1 |
+| FWEI_sentinel-2.js | FWEI | Floating Water and Erosion Index | Detecção de água flutuante e erosão | Água / Solo | Sentinel-2 |
+| GARI_sentinel-1.js | GARI | Green Atmospherically Resistant Index | ARVI baseado na banda verde, robusto a aerossóis | Vegetação | Sentinel-1 |
+| GARI_sentinel-2.js | GARI | Green Atmospherically Resistant Index | ARVI baseado na banda verde, robusto a aerossóis | Vegetação | Sentinel-2 |
+| GDVI_sentinel-2.js | GDVI | Green Difference Vegetation Index | Diferença usando banda verde para índice de vegetação | Vegetação | Sentinel-2 |
+| GLI_sentinel-1.js | GLI | Green Leaf Index | Estimativa de folhas verdes usando bandas RGB | Vegetação | Sentinel-1 |
+| GM1_sentinel-1.js | GM1 | Gitelson and Merzlyak Index 1 | Estimativa de clorofila foliar pelo índice de Gitelson-Merzlyak | Vegetação / Bioquímica | Sentinel-1 |
+| GM1_sentinel-2.js | GM1 | Gitelson and Merzlyak Index 1 | Estimativa de clorofila foliar pelo índice de Gitelson-Merzlyak | Vegetação / Bioquímica | Sentinel-2 |
+| GNDVI_landsat.js | GNDVI | Green Normalized Difference Vegetation Index | NDVI usando banda verde em vez de vermelho, sensível a clorofila | Vegetação / Bioquímica | Landsat |
+| GNDVI_sentinel-1.js | GNDVI | Green Normalized Difference Vegetation Index | NDVI usando banda verde em vez de vermelho, sensível a clorofila | Vegetação / Bioquímica | Sentinel-1 |
+| GNDVI_sentinel-2.js | GNDVI | Green Normalized Difference Vegetation Index | NDVI usando banda verde em vez de vermelho, sensível a clorofila | Vegetação / Bioquímica | Sentinel-2 |
+| GOSAVI_landsat.js | GOSAVI | Green Optimized Soil-Adjusted Vegetation Index | OSAVI com banda verde, corrigido para influência de solo | Vegetação / Solo | Landsat |
+| GOSAVI_sentinel-1.js | GOSAVI | Green Optimized Soil-Adjusted Vegetation Index | OSAVI com banda verde, corrigido para influência de solo | Vegetação / Solo | Sentinel-1 |
+| GOSAVI_sentinel-2.js | GOSAVI | Green Optimized Soil-Adjusted Vegetation Index | OSAVI com banda verde, corrigido para influência de solo | Vegetação / Solo | Sentinel-2 |
+| GRVI_sentinel-1.js | GRVI | Green-Red Vegetation Index | Razão verde/vermelho para estimativa de vegetação | Vegetação | Sentinel-1 |
+| GRVI_sentinel-2.js | GRVI | Green-Red Vegetation Index | Razão verde/vermelho para estimativa de vegetação | Vegetação | Sentinel-2 |
+| GSAVI_sentinel-1.js | GSAVI | Green Soil-Adjusted Vegetation Index | SAVI com banda verde para correção de solo | Vegetação / Solo | Sentinel-1 |
+| GSAVI_sentinel-2.js | GSAVI | Green Soil-Adjusted Vegetation Index | SAVI com banda verde para correção de solo | Vegetação / Solo | Sentinel-2 |
+| IAVI_landsat.js | IAVI | Improved Atmospherically Resistant Vegetation Index | ARVI melhorado para robustez atmosférica | Vegetação | Landsat |
+| IAVI_sentinel-1.js | IAVI | Improved Atmospherically Resistant Vegetation Index | ARVI melhorado para robustez atmosférica | Vegetação | Sentinel-1 |
+| IAVI_sentinel-2.js | IAVI | Improved Atmospherically Resistant Vegetation Index | ARVI melhorado para robustez atmosférica | Vegetação | Sentinel-2 |
+| IBI_landsat.js | IBI | Index-Based Built-up Index | Índice baseado em múltiplos índices para área construída | Área urbana | Landsat |
+| IBI_sentinel-1.js | IBI | Index-Based Built-up Index | Índice baseado em múltiplos índices para área construída | Área urbana | Sentinel-1 |
+| IBI_sentinel-2.js | IBI | Index-Based Built-up Index | Índice baseado em múltiplos índices para área construída | Área urbana | Sentinel-2 |
+| IPVI_landsat.js | IPVI | Infrared Percentage Vegetation Index | Percentagem de NIR como índice de vegetação | Vegetação | Landsat |
+| IPVI_sentinel-1.js | IPVI | Infrared Percentage Vegetation Index | Percentagem de NIR como índice de vegetação | Vegetação | Sentinel-1 |
+| IRECI_landsat.js | IRECI | Inverted Red-Edge Chlorophyll Index | Estimativa de clorofila via red-edge invertido | Vegetação / Bioquímica | Landsat |
+| IRECI_sentinel-1.js | IRECI | Inverted Red-Edge Chlorophyll Index | Estimativa de clorofila via red-edge invertido | Vegetação / Bioquímica | Sentinel-1 |
+| IRECI_sentinel-2.js | IRECI | Inverted Red-Edge Chlorophyll Index | Estimativa de clorofila via red-edge invertido | Vegetação / Bioquímica | Sentinel-2 |
+| KDI_landsat.js | KDI | Kelp/Canopy Density Index | Estimativa de densidade de dossel/kelp marinho | Vegetação aquática | Landsat |
+| KDI_sentinel-1.js | KDI | Kelp/Canopy Density Index | Estimativa de densidade de dossel/kelp marinho | Vegetação aquática | Sentinel-1 |
+| kIPVI_sentinel-2.js | kIPVI | kernel Infrared Percentage Vegetation Index | Versão kernelizada do IPVI para não-linearidade | Vegetação | Sentinel-2 |
+| kNDVI_sentinel-2.js | kNDVI | kernel Normalized Difference Vegetation Index | Versão kernelizada do NDVI para capturar relações não-lineares | Vegetação | Sentinel-2 |
+| kVARI_landsat.js | kVARI | kernel Visible Atmospherically Resistant Index | Versão kernelizada do VARI | Vegetação | Landsat |
+| kVARI_sentinel-1.js | kVARI | kernel Visible Atmospherically Resistant Index | Versão kernelizada do VARI | Vegetação | Sentinel-1 |
+| LSWI_landsat.js | LSWI | Land Surface Water Index | Sensível ao conteúdo de água em folhas e solo | Vegetação / Água | Landsat |
+| LSWI_sentinel-2.js | LSWI | Land Surface Water Index | Sensível ao conteúdo de água em folhas e solo | Vegetação / Água | Sentinel-2 |
+| MBWI_sentinel-1.js | MBWI | Multi-Band Water Index | Índice de água multi-banda para detecção hídrica | Água | Sentinel-1 |
+| MCARI_sentinel-1.js | MCARI | Modified Chlorophyll Absorption in Reflectance Index | Estimativa de absorção de clorofila com redução de solo | Vegetação / Bioquímica | Sentinel-1 |
+| MCARI_sentinel-2.js | MCARI | Modified Chlorophyll Absorption in Reflectance Index | Estimativa de absorção de clorofila com redução de solo | Vegetação / Bioquímica | Sentinel-2 |
+| MCARI2_sentinel-1.js | MCARI2 | Modified Chlorophyll Absorption Reflectance Index 2 | Versão melhorada do MCARI | Vegetação / Bioquímica | Sentinel-1 |
+| MCARI2_sentinel-2.js | MCARI2 | Modified Chlorophyll Absorption Reflectance Index 2 | Versão melhorada do MCARI | Vegetação / Bioquímica | Sentinel-2 |
+| MCARI705_sentinel-1.js | MCARI705 | MCARI at 705nm | MCARI calculado na faixa red-edge 705nm | Vegetação / Bioquímica | Sentinel-1 |
+| MCARIOSAVI705_landsat.js | MCARIOSAVI705 | MCARI/OSAVI ratio at 705nm | Razão MCARI/OSAVI em 705nm para estimativa de clorofila | Vegetação / Bioquímica | Landsat |
+| MCARIOSAVI705_sentinel-1.js | MCARIOSAVI705 | MCARI/OSAVI ratio at 705nm | Razão MCARI/OSAVI em 705nm para estimativa de clorofila | Vegetação / Bioquímica | Sentinel-1 |
+| MCARIOSAVI705_sentinel-2.js | MCARIOSAVI705 | MCARI/OSAVI ratio at 705nm | Razão MCARI/OSAVI em 705nm para estimativa de clorofila | Vegetação / Bioquímica | Sentinel-2 |
+| MGRVI_landsat.js | MGRVI | Modified Green-Red Vegetation Index | Versão modificada do GRVI para discriminação de vegetação | Vegetação | Landsat |
+| MGRVI_sentinel-2.js | MGRVI | Modified Green-Red Vegetation Index | Versão modificada do GRVI para discriminação de vegetação | Vegetação | Sentinel-2 |
+| MIRBI_landsat.js | MIRBI | Mid-Infrared Burn Index | Detecção de queimadas usando SWIR médio | Fogo / Queimadas | Landsat |
+| MLSWI26_landsat.js | MLSWI26 | Modified Land Surface Water Index 2+6 | LSWI modificado combinando bandas SWIR 2 e 6 | Água / Vegetação | Landsat |
+| mND705_landsat.js | mND705 | Modified Normalized Difference at 705nm | ND modificado em 705nm para estimativa de clorofila red-edge | Vegetação / Bioquímica | Landsat |
+| MNDVI_landsat.js | MNDVI | Modified Normalized Difference Vegetation Index | NDVI modificado para melhor desempenho em vegetação densa | Vegetação | Landsat |
+| MNDVI_sentinel-1.js | MNDVI | Modified Normalized Difference Vegetation Index | NDVI modificado para melhor desempenho em vegetação densa | Vegetação | Sentinel-1 |
+| MNDVI_sentinel-2.js | MNDVI | Modified Normalized Difference Vegetation Index | NDVI modificado para melhor desempenho em vegetação densa | Vegetação | Sentinel-2 |
+| MNDWI_sentinel-1.js | MNDWI | Modified Normalized Difference Water Index | NDWI modificado usando SWIR para melhor detecção de água | Água | Sentinel-1 |
+| MRBVI_landsat.js | MRBVI | Modified Red Blue Vegetation Index | Índice de vegetação vermelho-azul modificado | Vegetação | Landsat |
+| MRBVI_sentinel-1.js | MRBVI | Modified Red Blue Vegetation Index | Índice de vegetação vermelho-azul modificado | Vegetação | Sentinel-1 |
+| MRBVI_sentinel-2.js | MRBVI | Modified Red Blue Vegetation Index | Índice de vegetação vermelho-azul modificado | Vegetação | Sentinel-2 |
+| MSAVI_sentinel-1.js | MSAVI | Modified Soil-Adjusted Vegetation Index | SAVI com fator de ajuste de solo otimizado automaticamente | Vegetação / Solo | Sentinel-1 |
+| MSAVI_sentinel-2.js | MSAVI | Modified Soil-Adjusted Vegetation Index | SAVI com fator de ajuste de solo otimizado automaticamente | Vegetação / Solo | Sentinel-2 |
+| MSR_landsat.js | MSR | Modified Simple Ratio | Razão simples NIR/vermelho modificada para estabilidade | Vegetação | Landsat |
+| MSR705_sentinel-1.js | MSR705 | Modified Simple Ratio at 705nm | MSR calculado na banda red-edge 705nm | Vegetação / Bioquímica | Sentinel-1 |
+| MSR705_sentinel-2.js | MSR705 | Modified Simple Ratio at 705nm | MSR calculado na banda red-edge 705nm | Vegetação / Bioquímica | Sentinel-2 |
+| MTVI1_landsat.js | MTVI1 | Modified Triangular Vegetation Index 1 | Sensível à biomassa foliar com redução de solo | Vegetação | Landsat |
+| MTVI1_sentinel-1.js | MTVI1 | Modified Triangular Vegetation Index 1 | Sensível à biomassa foliar com redução de solo | Vegetação | Sentinel-1 |
+| MTVI1_sentinel-2.js | MTVI1 | Modified Triangular Vegetation Index 1 | Sensível à biomassa foliar com redução de solo | Vegetação | Sentinel-2 |
+| MTVI2_landsat.js | MTVI2 | Modified Triangular Vegetation Index 2 | Versão melhorada do MTVI1 para LAI | Vegetação | Landsat |
+| MTVI2_sentinel-1.js | MTVI2 | Modified Triangular Vegetation Index 2 | Versão melhorada do MTVI1 para LAI | Vegetação | Sentinel-1 |
+| MuWIR_landsat.js | MuWIR | Multiple Water Index using Red | Índice de água múltiplo usando banda vermelha | Água | Landsat |
+| MuWIR_sentinel-1.js | MuWIR | Multiple Water Index using Red | Índice de água múltiplo usando banda vermelha | Água | Sentinel-1 |
+| MuWIR_sentinel-2.js | MuWIR | Multiple Water Index using Red | Índice de água múltiplo usando banda vermelha | Água | Sentinel-2 |
+| NBAI_landsat.js | NBAI | Normalized Built-up Area Index | Índice normalizado de área construída | Área urbana | Landsat |
+| NBAI_sentinel-1.js | NBAI | Normalized Built-up Area Index | Índice normalizado de área construída | Área urbana | Sentinel-1 |
+| NBAI_sentinel-2.js | NBAI | Normalized Built-up Area Index | Índice normalizado de área construída | Área urbana | Sentinel-2 |
+| NBLIOLI_landsat.js | NBLIOLI | Normalized Built-up Land Index OLI | Índice de área construída normalizado para sensor OLI (Landsat 8/9) | Área urbana | Landsat |
+| NBR_landsat.js | NBR | Normalized Burn Ratio | Razão normalizada para detecção e severidade de queimadas | Fogo / Queimadas | Landsat |
+| NBR_sentinel-1.js | NBR | Normalized Burn Ratio | Razão normalizada para detecção e severidade de queimadas | Fogo / Queimadas | Sentinel-1 |
+| NBRplus_landsat.js | NBRplus | Normalized Burn Ratio Plus | Versão aprimorada do NBR com maior sensibilidade pós-fogo | Fogo / Queimadas | Landsat |
+| NBRplus_sentinel-2.js | NBRplus | Normalized Burn Ratio Plus | Versão aprimorada do NBR com maior sensibilidade pós-fogo | Fogo / Queimadas | Sentinel-2 |
+| NBRSWIR_sentinel-1.js | NBRSWIR | Normalized Burn Ratio SWIR | NBR usando bandas SWIR para queimadas | Fogo / Queimadas | Sentinel-1 |
+| NBRSWIR_sentinel-2.js | NBRSWIR | Normalized Burn Ratio SWIR | NBR usando bandas SWIR para queimadas | Fogo / Queimadas | Sentinel-2 |
+| NBRT1_sentinel-1.js | NBRT1 | Normalized Burn Ratio Thermal 1 | NBR combinado com banda térmica (versão 1) | Fogo / Queimadas | Sentinel-1 |
+| NBRT1_sentinel-2.js | NBRT1 | Normalized Burn Ratio Thermal 1 | NBR combinado com banda térmica (versão 1) | Fogo / Queimadas | Sentinel-2 |
+| NBRT2_sentinel-1.js | NBRT2 | Normalized Burn Ratio Thermal 2 | NBR combinado com banda térmica (versão 2) | Fogo / Queimadas | Sentinel-1 |
+| NBRT3_landsat.js | NBRT3 | Normalized Burn Ratio Thermal 3 | NBR combinado com banda térmica (versão 3) | Fogo / Queimadas | Landsat |
+| NBRT3_sentinel-2.js | NBRT3 | Normalized Burn Ratio Thermal 3 | NBR combinado com banda térmica (versão 3) | Fogo / Queimadas | Sentinel-2 |
+| NBUI_landsat.js | NBUI | New Built-up Index | Novo índice de área construída baseado em SWIR e verde | Área urbana | Landsat |
+| NBUI_sentinel-1.js | NBUI | New Built-up Index | Novo índice de área construída baseado em SWIR e verde | Área urbana | Sentinel-1 |
+| ND705_landsat.js | ND705 | Normalized Difference at 705nm | Diferença normalizada centrada em 705nm (red-edge) | Vegetação / Bioquímica | Landsat |
+| ND705_sentinel-1.js | ND705 | Normalized Difference at 705nm | Diferença normalizada centrada em 705nm (red-edge) | Vegetação / Bioquímica | Sentinel-1 |
+| ND705_sentinel-2.js | ND705 | Normalized Difference at 705nm | Diferença normalizada centrada em 705nm (red-edge) | Vegetação / Bioquímica | Sentinel-2 |
+| NDBaI_landsat.js | NDBaI | Normalized Difference Bareness Index | Detecção de solo nu e superfícies expostas | Solo | Landsat |
+| NDBaI_sentinel-1.js | NDBaI | Normalized Difference Bareness Index | Detecção de solo nu e superfícies expostas | Solo | Sentinel-1 |
+| NDCI_sentinel-1.js | NDCI | Normalized Difference Chlorophyll Index | Estimativa de clorofila em águas costeiras e interiores | Água / Qualidade hídrica | Sentinel-1 |
+| NDCI_sentinel-2.js | NDCI | Normalized Difference Chlorophyll Index | Estimativa de clorofila em águas costeiras e interiores | Água / Qualidade hídrica | Sentinel-2 |
+| NDGI_landsat.js | NDGI | Normalized Difference Glacier Index | Detecção e monitoramento de geleiras | Neve / Gelo | Landsat |
+| NDGI_sentinel-1.js | NDGI | Normalized Difference Glacier Index | Detecção e monitoramento de geleiras | Neve / Gelo | Sentinel-1 |
+| NDGlaI_sentinel-1.js | NDGlaI | Normalized Difference Glacial Lake Index | Detecção de lagos glaciais | Água / Gelo | Sentinel-1 |
+| NDGlaI_sentinel-2.js | NDGlaI | Normalized Difference Glacial Lake Index | Detecção de lagos glaciais | Água / Gelo | Sentinel-2 |
+| NDISIb_landsat.js | NDISIb | Normalized Difference Impervious Surface Index (blue) | Superfícies impermeáveis usando banda azul | Área urbana | Landsat |
+| NDISIb_sentinel-1.js | NDISIb | Normalized Difference Impervious Surface Index (blue) | Superfícies impermeáveis usando banda azul | Área urbana | Sentinel-1 |
+| NDISIg_sentinel-1.js | NDISIg | Normalized Difference Impervious Surface Index (green) | Superfícies impermeáveis usando banda verde | Área urbana | Sentinel-1 |
+| NDISIg_sentinel-2.js | NDISIg | Normalized Difference Impervious Surface Index (green) | Superfícies impermeáveis usando banda verde | Área urbana | Sentinel-2 |
+| NDISIndwi_landsat.js | NDISIndwi | Normalized Difference Impervious Surface Index (NDWI) | Superfícies impermeáveis combinando NDWI | Área urbana / Água | Landsat |
+| NDISIndwi_sentinel-1.js | NDISIndwi | Normalized Difference Impervious Surface Index (NDWI) | Superfícies impermeáveis combinando NDWI | Área urbana / Água | Sentinel-1 |
+| NDISIr_sentinel-1.js | NDISIr | Normalized Difference Impervious Surface Index (red) | Superfícies impermeáveis usando banda vermelha | Área urbana | Sentinel-1 |
+| NDISIr_sentinel-2.js | NDISIr | Normalized Difference Impervious Surface Index (red) | Superfícies impermeáveis usando banda vermelha | Área urbana | Sentinel-2 |
+| NDPI_landsat.js | NDPI | Normalized Difference Pond Index | Detecção de pequenos corpos d’água e lagoas | Água | Landsat |
+| NDPI_sentinel-1.js | NDPI | Normalized Difference Pond Index | Detecção de pequenos corpos d’água e lagoas | Água | Sentinel-1 |
+| NDPI_sentinel-2.js | NDPI | Normalized Difference Pond Index | Detecção de pequenos corpos d’água e lagoas | Água | Sentinel-2 |
+| NDPolI_sentinel-1.js | NDPolI | Normalized Difference Polarization Index | Índice de polarização diferencial (SAR) | SAR | Sentinel-1 |
+| NDPolI_sentinel-2.js | NDPolI | Normalized Difference Polarization Index | Índice de polarização diferencial (SAR) | SAR | Sentinel-2 |
+| NDREI_landsat.js | NDREI | Normalized Difference Red-Edge Index | Índice red-edge normalizado para clorofila | Vegetação / Bioquímica | Landsat |
+| NDREI_sentinel-1.js | NDREI | Normalized Difference Red-Edge Index | Índice red-edge normalizado para clorofila | Vegetação / Bioquímica | Sentinel-1 |
+| NDSaII_landsat.js | NDSaII | Normalized Difference Salinity Index II | Detecção de salinidade do solo (versão 2) | Solo / Salinidade | Landsat |
+| NDSaII_sentinel-2.js | NDSaII | Normalized Difference Salinity Index II | Detecção de salinidade do solo (versão 2) | Solo / Salinidade | Sentinel-2 |
+| NDSI_landsat.js | NDSI | Normalized Difference Snow Index | Detecção e mapeamento de cobertura de neve | Neve / Gelo | Landsat |
+| NDSI_sentinel-1.js | NDSI | Normalized Difference Snow Index | Detecção e mapeamento de cobertura de neve | Neve / Gelo | Sentinel-1 |
+| NDSII_sentinel-2.js | NDSII | Normalized Difference Snow and Ice Index | Detecção combinada de neve e gelo | Neve / Gelo | Sentinel-2 |
+| NDSIITM_landsat.js | NDSIITM | Normalized Difference Snow Index ITM | NDSI adaptado para sensor ETM+ (Landsat 7) | Neve / Gelo | Landsat |
+| NDSInw_landsat.js | NDSInw | Normalized Difference Snow Index (no water) | NDSI sem interferência de superfícies d’água | Neve / Gelo | Landsat |
+| NDSoI_sentinel-2.js | NDSoI | Normalized Difference Soil Index | Detecção e caracterização de solos expostos | Solo | Sentinel-2 |
+| NDSWIR_sentinel-1.js | NDSWIR | Normalized Difference SWIR Index | Índice normalizado usando bandas SWIR | Solo / Vegetação | Sentinel-1 |
+| NDTI_sentinel-1.js | NDTI | Normalized Difference Turbidity Index | Estimativa de turbidez em corpos d’água | Água / Qualidade hídrica | Sentinel-1 |
+| NDTI4RE_sentinel-2.js | NDTI4RE | Normalized Difference Tillage Index 4 Red-Edge | Índice de preparo de solo com red-edge | Solo / Agricultura | Sentinel-2 |
+| NDVI4RE_landsat.js | NDVI4RE | Normalized Difference Vegetation Index 4 Red-Edge | NDVI utilizando a 4ª banda red-edge | Vegetação | Landsat |
+| NDVI4RE_sentinel-2.js | NDVI4RE | Normalized Difference Vegetation Index 4 Red-Edge | NDVI utilizando a 4ª banda red-edge | Vegetação | Sentinel-2 |
+| NDVI705_sentinel-1.js | NDVI705 | Normalized Difference Vegetation Index at 705nm | NDVI na faixa red-edge de 705nm | Vegetação / Bioquímica | Sentinel-1 |
+| NDVI705_sentinel-2.js | NDVI705 | Normalized Difference Vegetation Index at 705nm | NDVI na faixa red-edge de 705nm | Vegetação / Bioquímica | Sentinel-2 |
+| NDVIT_landsat.js | NDVIT | Normalized Difference Vegetation Index Thermal | NDVI combinado com temperatura superficial | Vegetação / Temperatura | Landsat |
+| NDVIT_sentinel-2.js | NDVIT | Normalized Difference Vegetation Index Thermal | NDVI combinado com temperatura superficial | Vegetação / Temperatura | Sentinel-2 |
+| NDWI_landsat.js | NDWI | Normalized Difference Water Index | Índice clássico de detecção de corpos d’água superficiais | Água | Landsat |
+| NDWI_sentinel-2.js | NDWI | Normalized Difference Water Index | Índice clássico de detecção de corpos d’água superficiais | Água | Sentinel-2 |
+| NDYI_landsat.js | NDYI | Normalized Difference Yellowness Index | Detecção de amarelamento em culturas (estresse/senescência) | Agricultura / Vegetação | Landsat |
+| NDYI_sentinel-1.js | NDYI | Normalized Difference Yellowness Index | Detecção de amarelamento em culturas (estresse/senescência) | Agricultura / Vegetação | Sentinel-1 |
+| NDYI_sentinel-2.js | NDYI | Normalized Difference Yellowness Index | Detecção de amarelamento em culturas (estresse/senescência) | Agricultura / Vegetação | Sentinel-2 |
+| NGRDI_sentinel-1.js | NGRDI | Normalized Green-Red Difference Index | Diferença normalizada verde-vermelho para vegetação e solo | Vegetação | Sentinel-1 |
+| NGRDI_sentinel-2.js | NGRDI | Normalized Green-Red Difference Index | Diferença normalizada verde-vermelho para vegetação e solo | Vegetação | Sentinel-2 |
+| NIRv_landsat.js | NIRv | Near-Infrared reflectance of Vegetation | Refletância NIR da vegetação; proxy de GPP/produtividade | Vegetação / Fenologia | Landsat |
+| NIRv_sentinel-1.js | NIRv | Near-Infrared reflectance of Vegetation | Refletância NIR da vegetação; proxy de GPP/produtividade | Vegetação / Fenologia | Sentinel-1 |
+| NIRvH2_landsat.js | NIRvH2 | NIRv Hybrid 2 | Versão híbrida melhorada do NIRv | Vegetação / Fenologia | Landsat |
+| NIRvH2_sentinel-1.js | NIRvH2 | NIRv Hybrid 2 | Versão híbrida melhorada do NIRv | Vegetação / Fenologia | Sentinel-1 |
+| NLI_landsat.js | NLI | Non-Linear Index | Índice não-linear de vegetação para dossel denso | Vegetação | Landsat |
+| NLI_sentinel-2.js | NLI | Non-Linear Index | Índice não-linear de vegetação para dossel denso | Vegetação | Sentinel-2 |
+| NMDI_landsat.js | NMDI | Normalized Multi-band Drought Index | Monitoramento de seca combinando NIR e SWIR | Vegetação / Estresse | Landsat |
+| NMDI_sentinel-2.js | NMDI | Normalized Multi-band Drought Index | Monitoramento de seca combinando NIR e SWIR | Vegetação / Estresse | Sentinel-2 |
+| NormG_sentinel-1.js | NormG | Normalized Green | Banda verde normalizada pela soma RGB | Vegetação | Sentinel-1 |
+| NormNIR_sentinel-1.js | NormNIR | Normalized NIR | Banda NIR normalizada | Vegetação | Sentinel-1 |
+| NormR_landsat.js | NormR | Normalized Red | Banda vermelha normalizada pela soma RGB | Solo / Vegetação | Landsat |
+| NRFIg_landsat.js | NRFIg | Normalized Ratio Fluorescence Index (green) | Índice de fluorescência normalizada usando verde | Vegetação / Bioquímica | Landsat |
+| NRFIg_sentinel-2.js | NRFIg | Normalized Ratio Fluorescence Index (green) | Índice de fluorescência normalizada usando verde | Vegetação / Bioquímica | Sentinel-2 |
+| NRFIr_landsat.js | NRFIr | Normalized Ratio Fluorescence Index (red) | Índice de fluorescência normalizada usando vermelho | Vegetação / Bioquímica | Landsat |
+| NRFIr_sentinel-2.js | NRFIr | Normalized Ratio Fluorescence Index (red) | Índice de fluorescência normalizada usando vermelho | Vegetação / Bioquímica | Sentinel-2 |
+| NSDSI1_landsat.js | NSDSI1 | Normalized Soil Degradation Spectral Index 1 | Degradação de solo (versão 1) | Solo | Landsat |
+| NSDSI1_sentinel-1.js | NSDSI1 | Normalized Soil Degradation Spectral Index 1 | Degradação de solo (versão 1) | Solo | Sentinel-1 |
+| NSDSI1_sentinel-2.js | NSDSI1 | Normalized Soil Degradation Spectral Index 1 | Degradação de solo (versão 1) | Solo | Sentinel-2 |
+| NSDSI2_sentinel-1.js | NSDSI2 | Normalized Soil Degradation Spectral Index 2 | Degradação de solo (versão 2) | Solo | Sentinel-1 |
+| NSDSI2_sentinel-2.js | NSDSI2 | Normalized Soil Degradation Spectral Index 2 | Degradação de solo (versão 2) | Solo | Sentinel-2 |
+| NSDSI3_landsat.js | NSDSI3 | Normalized Soil Degradation Spectral Index 3 | Degradação de solo (versão 3) | Solo | Landsat |
+| NSTv1_sentinel-1.js | NSTv1 | Normalized Soil Tillage Index version 1 | Preparo e manejo de solo (versão 1) | Solo / Agricultura | Sentinel-1 |
+| NSTv1_sentinel-2.js | NSTv1 | Normalized Soil Tillage Index version 1 | Preparo e manejo de solo (versão 1) | Solo / Agricultura | Sentinel-2 |
+| NSTv2_sentinel-1.js | NSTv2 | Normalized Soil Tillage Index version 2 | Preparo e manejo de solo (versão 2) | Solo / Agricultura | Sentinel-1 |
+| NSTv2_sentinel-2.js | NSTv2 | Normalized Soil Tillage Index version 2 | Preparo e manejo de solo (versão 2) | Solo / Agricultura | Sentinel-2 |
+| NWI_landsat.js | NWI | New Water Index | Novo índice para detecção de água | Água | Landsat |
+| OCVI_sentinel-1.js | OCVI | Optimized Chlorophyll Vegetation Index | Estimativa otimizada de clorofila | Vegetação / Bioquímica | Sentinel-1 |
+| OCVI_sentinel-2.js | OCVI | Optimized Chlorophyll Vegetation Index | Estimativa otimizada de clorofila | Vegetação / Bioquímica | Sentinel-2 |
+| OSAVI_sentinel-1.js | OSAVI | Optimized Soil-Adjusted Vegetation Index | SAVI com fator de ajuste de solo otimizado (L=0,16) | Vegetação / Solo | Sentinel-1 |
+| OSAVI_sentinel-2.js | OSAVI | Optimized Soil-Adjusted Vegetation Index | SAVI com fator de ajuste de solo otimizado (L=0,16) | Vegetação / Solo | Sentinel-2 |
+| OSI_landsat.js | OSI | Oil Spill Index | Detecção de derramamentos de óleo em superfícies aquáticas | Água / Poluição | Landsat |
+| PI_sentinel-2.js | PI | Plastic Index | Detecção de resíduos plásticos em ambiente aquático | Água / Poluição | Sentinel-2 |
+| PISI_sentinel-2.js | PISI | Perpendicular Impervious Surface Index | Superfícies impermeáveis por método perpendicular | Área urbana | Sentinel-2 |
+| RCC_sentinel-1.js | RCC | Red Chromatic Coordinate | Proporção do canal vermelho no espaço RGB | Solo / Vegetação | Sentinel-1 |
+| RDVI_landsat.js | RDVI | Renormalized Difference Vegetation Index | NDVI renormalizado para sensibilidade em vegetação densa | Vegetação | Landsat |
+| RDVI_sentinel-1.js | RDVI | Renormalized Difference Vegetation Index | NDVI renormalizado para sensibilidade em vegetação densa | Vegetação | Sentinel-1 |
+| RENDVI_landsat.js | RENDVI | Red-Edge Normalized Difference Vegetation Index | NDVI calculado na faixa red-edge | Vegetação / Bioquímica | Landsat |
+| RENDVI_sentinel-2.js | RENDVI | Red-Edge Normalized Difference Vegetation Index | NDVI calculado na faixa red-edge | Vegetação / Bioquímica | Sentinel-2 |
+| RGRI_landsat.js | RGRI | Red-Green Ratio Index | Razão vermelho/verde para estresse e senescência | Vegetação / Estresse | Landsat |
+| RGRI_sentinel-1.js | RGRI | Red-Green Ratio Index | Razão vermelho/verde para estresse e senescência | Vegetação / Estresse | Sentinel-1 |
+| RGRI_sentinel-2.js | RGRI | Red-Green Ratio Index | Razão vermelho/verde para estresse e senescência | Vegetação / Estresse | Sentinel-2 |
+| RI_landsat.js | RI | Redness Index | Índice de vermelhidão do solo | Solo | Landsat |
+| RI_sentinel-1.js | RI | Redness Index | Índice de vermelhidão do solo | Solo | Sentinel-1 |
+| RI_sentinel-2.js | RI | Redness Index | Índice de vermelhidão do solo | Solo | Sentinel-2 |
+| RNDVI_landsat.js | RNDVI | Ratio Normalized Difference Vegetation Index | NDVI por razão de bandas | Vegetação | Landsat |
+| RNDVI_sentinel-1.js | RNDVI | Ratio Normalized Difference Vegetation Index | NDVI por razão de bandas | Vegetação | Sentinel-1 |
+| RVI_landsat.js | RVI | Ratio Vegetation Index | Razão simples NIR/vermelho para biomassa | Vegetação | Landsat |
+| RVI_sentinel-1.js | RVI | Ratio Vegetation Index | Razão simples NIR/vermelho para biomassa | Vegetação | Sentinel-1 |
+| RVI_sentinel-2.js | RVI | Ratio Vegetation Index | Razão simples NIR/vermelho para biomassa | Vegetação | Sentinel-2 |
+| RVI4RE_landsat.js | RVI4RE | Ratio Vegetation Index 4 Red-Edge | RVI usando a 4ª banda red-edge | Vegetação | Landsat |
+| RWI_sentinel-1.js | RWI | Radar Water Index | Índice de água baseado em backscatter SAR | Água / SAR | Sentinel-1 |
+| RWI_sentinel-2.js | RWI | Radar Water Index | Índice de água baseado em backscatter SAR | Água / SAR | Sentinel-2 |
+| S2REP_sentinel-1.js | S2REP | Sentinel-2 Red-Edge Position | Posição da borda do vermelho (red-edge) no espectro foliar | Vegetação / Bioquímica | Sentinel-1 |
+| S2REP_sentinel-2.js | S2REP | Sentinel-2 Red-Edge Position | Posição da borda do vermelho (red-edge) no espectro foliar | Vegetação / Bioquímica | Sentinel-2 |
+| S2WI_landsat.js | S2WI | Sentinel-2 Water Index | Índice de água adaptado ao Sentinel-2 | Água | Landsat |
+| S3_sentinel-1.js | S3 | S3 index | Índice de solo S3 para identificação de solo nu | Solo | Sentinel-1 |
+| SARVI_sentinel-1.js | SARVI | Soil-Adjusted and Atmospherically Resistant Vegetation Index | ARVI com ajuste de solo para correção atmosférica e de fundo | Vegetação | Sentinel-1 |
+| SAVI_landsat.js | SAVI | Soil-Adjusted Vegetation Index | NDVI ajustado para minimizar influência do solo nu | Vegetação / Solo | Landsat |
+| SAVI2_sentinel-2.js | SAVI2 | Soil-Adjusted Vegetation Index 2 | Versão alternativa do SAVI | Vegetação / Solo | Sentinel-2 |
+| SAVI4RE_sentinel-2.js | SAVI4RE | Soil-Adjusted Vegetation Index 4 Red-Edge | SAVI com 4ª banda red-edge | Vegetação / Solo | Sentinel-2 |
+| SCoWI_landsat.js | SCoWI | Scaled Combined Water Index | Índice de água combinado e escalado | Água | Landsat |
+| SCoWI_sentinel-1.js | SCoWI | Scaled Combined Water Index | Índice de água combinado e escalado | Água | Sentinel-1 |
+| SCoWI_sentinel-2.js | SCoWI | Scaled Combined Water Index | Índice de água combinado e escalado | Água | Sentinel-2 |
+| SeLI_landsat.js | SeLI | Sentinel-2 LAI Index | Estimativa de Índice de Área Foliar (LAI) com Sentinel-2 | Vegetação | Landsat |
+| SeLI_sentinel-1.js | SeLI | Sentinel-2 LAI Index | Estimativa de Índice de Área Foliar (LAI) com Sentinel-2 | Vegetação | Sentinel-1 |
+| SeLI_sentinel-2.js | SeLI | Sentinel-2 LAI Index | Estimativa de Índice de Área Foliar (LAI) com Sentinel-2 | Vegetação | Sentinel-2 |
+| SEVI_landsat.js | SEVI | Soil-adjusted Enhanced Vegetation Index | EVI ajustado para influência de solo | Vegetação / Solo | Landsat |
+| SEVI_sentinel-1.js | SEVI | Soil-adjusted Enhanced Vegetation Index | EVI ajustado para influência de solo | Vegetação / Solo | Sentinel-1 |
+| SEVI_sentinel-2.js | SEVI | Soil-adjusted Enhanced Vegetation Index | EVI ajustado para influência de solo | Vegetação / Solo | Sentinel-2 |
+| SIPI_landsat.js | SIPI | Structure Insensitive Pigment Index | Insensível à estrutura do dossel; estima razão carotenoides/clorofila | Vegetação / Bioquímica | Landsat |
+| SIPI_sentinel-1.js | SIPI | Structure Insensitive Pigment Index | Insensível à estrutura do dossel; estima razão carotenoides/clorofila | Vegetação / Bioquímica | Sentinel-1 |
+| SIPI_sentinel-2.js | SIPI | Structure Insensitive Pigment Index | Insensível à estrutura do dossel; estima razão carotenoides/clorofila | Vegetação / Bioquímica | Sentinel-2 |
+| SLAVI_landsat.js | SLAVI | Specific Leaf Area Vegetation Index | Estimativa de área foliar específica | Vegetação | Landsat |
+| SLAVI_sentinel-1.js | SLAVI | Specific Leaf Area Vegetation Index | Estimativa de área foliar específica | Vegetação | Sentinel-1 |
+| SNDTI4RE_sentinel-1.js | SNDTI4RE | Spectral Normalized Difference Tillage Index 4 Red-Edge | Preparo de solo com red-edge normalizado espectralmente | Solo / Agricultura | Sentinel-1 |
+| SNDTI4RE_sentinel-2.js | SNDTI4RE | Spectral Normalized Difference Tillage Index 4 Red-Edge | Preparo de solo com red-edge normalizado espectralmente | Solo / Agricultura | Sentinel-2 |
+| sNIRvLSWI_landsat.js | sNIRvLSWI | scaled NIRv × LSWI | Produto escalonado NIRv e LSWI para fenologia hídrica | Vegetação / Fenologia | Landsat |
+| sNIRvLSWI_sentinel-1.js | sNIRvLSWI | scaled NIRv × LSWI | Produto escalonado NIRv e LSWI para fenologia hídrica | Vegetação / Fenologia | Sentinel-1 |
+| sNIRvLSWI_sentinel-2.js | sNIRvLSWI | scaled NIRv × LSWI | Produto escalonado NIRv e LSWI para fenologia hídrica | Vegetação / Fenologia | Sentinel-2 |
+| sNIRvNDPI_landsat.js | sNIRvNDPI | scaled NIRv × NDPI | Produto escalonado NIRv e NDPI | Vegetação / Água | Landsat |
+| sNIRvNDPI_sentinel-1.js | sNIRvNDPI | scaled NIRv × NDPI | Produto escalonado NIRv e NDPI | Vegetação / Água | Sentinel-1 |
+| sNIRvNDPI_sentinel-2.js | sNIRvNDPI | scaled NIRv × NDPI | Produto escalonado NIRv e NDPI | Vegetação / Água | Sentinel-2 |
+| sNIRvNDVILSWIS_landsat.js | sNIRvNDVILSWIS | scaled NIRv × NDVI × LSWI × S | Produto escalonado multíndice para fenologia | Vegetação / Fenologia | Landsat |
+| sNIRvNDVILSWIS_sentinel-1.js | sNIRvNDVILSWIS | scaled NIRv × NDVI × LSWI × S | Produto escalonado multíndice para fenologia | Vegetação / Fenologia | Sentinel-1 |
+| sNIRvNDVILSWIS_sentinel-2.js | sNIRvNDVILSWIS | scaled NIRv × NDVI × LSWI × S | Produto escalonado multíndice para fenologia | Vegetação / Fenologia | Sentinel-2 |
+| sNIRvSWIR_landsat.js | sNIRvSWIR | scaled NIRv × SWIR | Produto escalonado NIRv e SWIR | Vegetação / Fenologia | Landsat |
+| sNIRvSWIR_sentinel-1.js | sNIRvSWIR | scaled NIRv × SWIR | Produto escalonado NIRv e SWIR | Vegetação / Fenologia | Sentinel-1 |
+| sNIRvSWIR_sentinel-2.js | sNIRvSWIR | scaled NIRv × SWIR | Produto escalonado NIRv e SWIR | Vegetação / Fenologia | Sentinel-2 |
+| SR_sentinel-2.js | SR | Simple Ratio | Razão simples NIR/vermelho; base de índices de vegetação | Vegetação | Sentinel-2 |
+| SR3_sentinel-1.js | SR3 | Simple Ratio 3-band | Razão simples usando 3 bandas espectrais | Vegetação | Sentinel-1 |
+| SRVI_sentinel-1.js | SRVI | Simple Ratio Vegetation Index | Razão simples para estimativa de vegetação | Vegetação | Sentinel-1 |
+| SRWI_sentinel-1.js | SRWI | Simple Ratio Water Index | Razão simples para detecção de água em folhas | Vegetação / Água | Sentinel-1 |
+| STI4RE_sentinel-1.js | STI4RE | Spectral Tillage Index 4 Red-Edge | Índice de preparo de solo com red-edge | Solo / Agricultura | Sentinel-1 |
+| STI4RE_sentinel-2.js | STI4RE | Spectral Tillage Index 4 Red-Edge | Índice de preparo de solo com red-edge | Solo / Agricultura | Sentinel-2 |
+| SWI_sentinel-1.js | SWI | Soil Water Index | Monitoramento de umidade do solo | Solo / Água | Sentinel-1 |
+| SWI_sentinel-2.js | SWI | Soil Water Index | Monitoramento de umidade do solo | Solo / Água | Sentinel-2 |
+| TCARI_landsat.js | TCARI | Transformed Chlorophyll Absorption in Reflectance Index | CARI transformado para estimativa de clorofila com menor influência de solo | Vegetação / Bioquímica | Landsat |
+| TCARI_sentinel-1.js | TCARI | Transformed Chlorophyll Absorption in Reflectance Index | CARI transformado para estimativa de clorofila com menor influência de solo | Vegetação / Bioquímica | Sentinel-1 |
+| TCARI_sentinel-2.js | TCARI | Transformed Chlorophyll Absorption in Reflectance Index | CARI transformado para estimativa de clorofila com menor influência de solo | Vegetação / Bioquímica | Sentinel-2 |
+| TCARIOSAVI705_landsat.js | TCARIOSAVI705 | TCARI/OSAVI ratio at 705nm | Razão TCARI/OSAVI em 705nm para estimativa de clorofila robusta | Vegetação / Bioquímica | Landsat |
+| TCARIOSAVI705_sentinel-1.js | TCARIOSAVI705 | TCARI/OSAVI ratio at 705nm | Razão TCARI/OSAVI em 705nm para estimativa de clorofila robusta | Vegetação / Bioquímica | Sentinel-1 |
+| TCARIOSAVI705_sentinel-2.js | TCARIOSAVI705 | TCARI/OSAVI ratio at 705nm | Razão TCARI/OSAVI em 705nm para estimativa de clorofila robusta | Vegetação / Bioquímica | Sentinel-2 |
+| TCI_landsat.js | TCI | Triangular Chlorophyll Index | Estimativa de clorofila por geometria triangular espectral | Vegetação / Bioquímica | Landsat |
+| TCI_sentinel-1.js | TCI | Triangular Chlorophyll Index | Estimativa de clorofila por geometria triangular espectral | Vegetação / Bioquímica | Sentinel-1 |
+| TCI_sentinel-2.js | TCI | Triangular Chlorophyll Index | Estimativa de clorofila por geometria triangular espectral | Vegetação / Bioquímica | Sentinel-2 |
+| TGI_landsat.js | TGI | Triangular Greenness Index | Índice triangular de verdor usando RGB | Vegetação | Landsat |
+| TGI_sentinel-2.js | TGI | Triangular Greenness Index | Índice triangular de verdor usando RGB | Vegetação | Sentinel-2 |
+| TriVI_landsat.js | TriVI | Triangular Vegetation Index | Índice triangular de vegetação sensível a biomassa | Vegetação | Landsat |
+| TriVI_sentinel-2.js | TriVI | Triangular Vegetation Index | Índice triangular de vegetação sensível a biomassa | Vegetação | Sentinel-2 |
+| TRRVI_landsat.js | TRRVI | Transformed Red-edge Ratio Vegetation Index | RVI transformado usando red-edge | Vegetação / Bioquímica | Landsat |
+| TRRVI_sentinel-2.js | TRRVI | Transformed Red-edge Ratio Vegetation Index | RVI transformado usando red-edge | Vegetação / Bioquímica | Sentinel-2 |
+| TTVI_landsat.js | TTVI | Transformed Triangular Vegetation Index | Versão transformada do índice triangular de vegetação | Vegetação | Landsat |
+| TTVI_sentinel-1.js | TTVI | Transformed Triangular Vegetation Index | Versão transformada do índice triangular de vegetação | Vegetação | Sentinel-1 |
+| TTVI_sentinel-2.js | TTVI | Transformed Triangular Vegetation Index | Versão transformada do índice triangular de vegetação | Vegetação | Sentinel-2 |
+| TVI_landsat.js | TVI | Triangular Vegetation Index (classic) | Índice triangular de vegetação clássico | Vegetação | Landsat |
+| TVI_sentinel-1.js | TVI | Triangular Vegetation Index (classic) | Índice triangular de vegetação clássico | Vegetação | Sentinel-1 |
+| TVI_sentinel-2.js | TVI | Triangular Vegetation Index (classic) | Índice triangular de vegetação clássico | Vegetação | Sentinel-2 |
+| UI_landsat.js | UI | Urban Index | Discriminação de área urbana usando SWIR e NIR | Área urbana | Landsat |
+| UI_sentinel-2.js | UI | Urban Index | Discriminação de área urbana usando SWIR e NIR | Área urbana | Sentinel-2 |
+| VARI700_sentinel-2.js | VARI700 | Visible Atmospherically Resistant Index at 700nm | VARI calculado na faixa de 700nm | Vegetação | Sentinel-2 |
+| VDDPI_sentinel-2.js | VDDPI | Vegetation Dryness and Drought Pressure Index | Índice de secura e pressão de seca em vegetação | Vegetação / Estresse | Sentinel-2 |
+| VgNIRBI_sentinel-1.js | VgNIRBI | Visible Green–NIR Built-up Index | Índice de área construída verde-NIR | Área urbana | Sentinel-1 |
+| VHVVP_sentinel-1.js | VHVVP | VH-VV Polarization difference | Diferença de polarização VH-VV (SAR) | SAR | Sentinel-1 |
+| VHVVP_sentinel-2.js | VHVVP | VH-VV Polarization difference | Diferença de polarização VH-VV (SAR) | SAR | Sentinel-2 |
+| VHVVR_sentinel-1.js | VHVVR | VH/VV Polarization Ratio | Razão de polarização VH/VV (SAR); sensível a estrutura da vegetação | SAR / Vegetação | Sentinel-1 |
+| VHVVR_sentinel-2.js | VHVVR | VH/VV Polarization Ratio | Razão de polarização VH/VV (SAR); sensível a estrutura da vegetação | SAR / Vegetação | Sentinel-2 |
+| VI700_sentinel-1.js | VI700 | Vegetation Index at 700nm | Índice de vegetação centrado em 700nm (red-edge) | Vegetação / Bioquímica | Sentinel-1 |
+| VI700_sentinel-2.js | VI700 | Vegetation Index at 700nm | Índice de vegetação centrado em 700nm (red-edge) | Vegetação / Bioquímica | Sentinel-2 |
+| VIBI_sentinel-1.js | VIBI | Vegetation Index Built-up Index | Combinação de vegetação e área construída | Área urbana / Vegetação | Sentinel-1 |
+| VIBI_sentinel-2.js | VIBI | Vegetation Index Built-up Index | Combinação de vegetação e área construída | Área urbana / Vegetação | Sentinel-2 |
+| VrNIRBI_sentinel-1.js | VrNIRBI | Visible Red–NIR Built-up Index | Índice de área construída vermelho-NIR | Área urbana | Sentinel-1 |
+| VrNIRBI_sentinel-2.js | VrNIRBI | Visible Red–NIR Built-up Index | Índice de área construída vermelho-NIR | Área urbana | Sentinel-2 |
+| VVVHD_sentinel-1.js | VVVHD | VV-VH Difference | Diferença VV-VH de polarização SAR | SAR | Sentinel-1 |
+| VVVHR_sentinel-2.js | VVVHR | VV/VH Ratio | Razão VV/VH de polarização SAR | SAR | Sentinel-2 |
+| WCI2_landsat.js | WCI2 | Water Color Index 2 | Qualidade e cor da água (versão 2) | Água / Qualidade hídrica | Landsat |
+| WCI2_sentinel-1.js | WCI2 | Water Color Index 2 | Qualidade e cor da água (versão 2) | Água / Qualidade hídrica | Sentinel-1 |
+| WCI2_sentinel-2.js | WCI2 | Water Color Index 2 | Qualidade e cor da água (versão 2) | Água / Qualidade hídrica | Sentinel-2 |
+| WDRVI_sentinel-2.js | WDRVI | Wide Dynamic Range Vegetation Index | NDVI com faixa dinâmica ampliada para vegetação densa | Vegetação | Sentinel-2 |
+| WI1_landsat.js | WI1 | Water Index 1 | Índice de água (versão 1) | Água | Landsat |
+| WI1_sentinel-1.js | WI1 | Water Index 1 | Índice de água (versão 1) | Água | Sentinel-1 |
+| WI1_sentinel-2.js | WI1 | Water Index 1 | Índice de água (versão 1) | Água | Sentinel-2 |
+| WI2_sentinel-1.js | WI2 | Water Index 2 | Índice de água (versão 2) | Água | Sentinel-1 |
+| WI2_sentinel-2.js | WI2 | Water Index 2 | Índice de água (versão 2) | Água | Sentinel-2 |
+| WRI_landsat.js | WRI | Water Ratio Index | Razão de bandas para detecção de água | Água | Landsat |
+| WRI_sentinel-1.js | WRI | Water Ratio Index | Razão de bandas para detecção de água | Água | Sentinel-1 |
+| WRI_sentinel-2.js | WRI | Water Ratio Index | Razão de bandas para detecção de água | Água | Sentinel-2 |
