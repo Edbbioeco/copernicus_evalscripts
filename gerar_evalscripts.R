@@ -15,3 +15,9 @@ dados_espectrais <- rsi::spectral_indices() |>
   unique()
 
 dados_espectrais
+
+## Coleções ----
+
+colecoes <- c("sentinel-1", "sentinel-2", "landsat")
+
+colecoes
