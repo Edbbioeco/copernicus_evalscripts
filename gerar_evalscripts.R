@@ -57,3 +57,15 @@ evalscripts <- purrr::map(
   purrr::compact()
 
 evalscripts
+
+## Exportar Evalscripts como JavaScripts ----
+
+purrr::imap(evalscripts,
+            purrr::in_parallel(
+
+              ~.x |>
+                cat(sep = "\n",
+                    file = paste0(.y, ".js"))
+
+           ),
+           .progress = TRUE)
